@@ -125,7 +125,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**response here**
+**plants with larger biomass seem to have larger ranges, Grindelia has highest biomass, Acmispon has lowest biomass**
 
 ### how does total biomass differ between water treatments?
 
@@ -137,7 +137,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**response here**
+**well watered plants tend to have larger biomass, makes sense based on how plants work!**
 
 ### how does specific leaf area (SLA) influence total biomass?
 
@@ -148,17 +148,17 @@ ggplot(data = drought_exp_clean, # data frame
   geom_point() # scatterplot
 ```
 
-**response here**
+**SLA doesn't really affect total mass? check correlation, compare evidence (visual and statistical)**
 
 # Model construction
 
 What is the null model?  
 
-0. **null model here**  
+0. **total mass is not predicted by any of the three predictors**  
 
 What is the saturated model?  
 
-1. **saturated model here**  
+1. **total mass predicted by SLA, water treatment, and species**  
 
 In class we are going to try two more models:  
 
@@ -190,6 +190,8 @@ plot(model1)
 # you might get a warning when you run this code - that is ok!
 ```
 
+Diagnostics for saturated model look good!
+
 ## 2. total biomass as a function of SLA and water treatment
 
 ```{r}
@@ -199,6 +201,8 @@ model2 <- lm(total_g ~ sla + water_treatment,
 plot(model2)
 ```
 
+**look at the diagnostics later!!**
+
 ## 3. total biomass as a function of SLA and species
 
 ```{r}
@@ -207,6 +211,8 @@ model3 <- lm(total_g ~ sla + species_name,
 
 plot(model3)
 ```
+
+**look at the diagnostics!!!**
 
 # Model selection
 
@@ -219,9 +225,11 @@ model.sel(model0,
           model3)
 ```
 
-Out of the four models we have tried, the best model is the one that includes **insert predictors here**  
+Out of the four models we have tried, the best model is the one that includes **all three predictors (specific leaf area, water treatment, and species)**  
 
-Note that this may change once you fit and compare the other model!
+Note that this may change once you fit and compare the other model!  
+
+**look at the diagnostics again!!!!**
 
 # Model summary
 
@@ -234,14 +242,14 @@ What are the reference levels?
 - reference for `water_treatment`  
 - reference for `species_name`  
 
-**reference for water_treatment:** **insert response here**  
-**reference for species_name:** **insert response here**  
+**reference for water_treatment:** **water_treatmentDrought stressed**  
+**reference for species_name:** **species_nameAcmispon glaber**  
 
 Interpret the model estimates for the:  
 
-- intercept: **insert response here**  
-- SLA slope: **insert response here**  
-- well watered estimate: **insert response here**    
+- intercept: **mass of Acmispon glaber in drought stressed treatment when SLA = 0**  
+- SLA slope: **across drought treatments and species, with each 1 unit increase in SLA (mm^2^/dry mass of leaf), we expect an increase in total mass of -0.00025 WHICH MEANS WITH THE ESTIMATE AND STANDARD ERROR THERE IS NO EFFECT OF SLA ON TOTAL MASS**  
+- well watered estimate: **across species and SLA, well watered plants tend to be 0.12 +- (figure out how to write plus minus in text) 0.02 g heavier than drought stressed plants**    
 - Lotus scoparius estimate: **insert response here**    
 - Stipa pulchra estimate: **insert response here**    
 
