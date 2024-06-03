@@ -1,0 +1,44 @@
+---
+title: "Homework-03"
+format: html
+author: "Rebecca-Jane Gullette"
+---
+
+https://github.com/rebecca-jane-gullette/Gullette-RebeccaJane_homework-03.git
+
+##Read in Packages
+
+```{r}
+# general use
+library(tidyverse)
+library(readxl)
+library(here)
+library(janitor)
+
+# visualizing pairs
+library(GGally)
+
+# model selection
+library(MuMIn)
+
+# model predictions
+library(ggeffects)
+
+# model tables
+library(gtsummary)
+library(flextable)
+library(modelsummary)
+
+drought_exp <- read_xlsx(path = here("data", 
+                                     "Valliere_etal_EcoApps_Data.xlsx"),
+                         sheet = "First Harvest")
+
+# quick look at data 
+str(drought_exp)
+class(drought_exp)
+```
+
+#Problem 1. Multiple linear regression: model selection and construction
+
+##a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
+
