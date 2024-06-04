@@ -72,9 +72,100 @@ ggpairs(drought_exp_clean, # data frame
   theme(panel.grid = element_blank()) # getting rid of gridlines
 ```
 
+```{r total biomass differ between species}
+ggplot(data = drought_exp_clean, # data frame
+       aes(x = reorder(species_name, # reordering x-axis
+                       -total_g, # in reverse order of mean total mass
+                       fun = mean), # calculating mean to reorder
+           y = total_g)) + # y-axis
+  geom_jitter(width = 0.1, # narrow jitter
+              height = 0) # not jittering points up and down
+```
+
+```{r total biomass between water treatment}
+ggplot(data = drought_exp_clean, # data frame
+       aes(x = water_treatment, # x-axis
+           y = total_g)) + # y-axis
+  geom_jitter(width = 0.1, # narrow jitter
+              height = 0) # not jittering points up and down
+```
+```{r specific leaf area on total biomass}
+ggplot(data = drought_exp_clean, # data frame
+       aes(x = sla, # x-axis
+           y = total_g)) + # y-axis
+  geom_point() # scatterplot
+```
+## 0. Null model
+
+```{r}
+model0 <- lm(total_g ~ 1, # formula
+             data = drought_exp_clean) # data frame
+```
+
+## 1. total biomass as a function of SLA, water treatment, and species
+
+```{r}
+# saturated model
+model1 <- lm(total_g ~ sla + water_treatment + species_name,
+             data = drought_exp_clean)
+
+par(mfrow = c(2, 2))
+plot(model1)
+# you might get a warning when you run this code - that is ok!
+```
+## 2. total biomass as a function of SLA and water treatment
+
+```{r}
+model2 <- lm(total_g ~ sla + water_treatment,
+             data = drought_exp_clean)
+
+plot(model2)
+```
+
+## 3. total biomass as a function of SLA and species
+
+```{r}
+model3 <- lm(total_g ~ sla + species_name,
+             data = drought_exp_clean)
+
+plot(model3)
+```
+
+## 4. total biomass as a function of water treatment and species
+
+```{r}
+model4 <- lm(total_g ~ water_treatment + species_name,
+             data = drought_exp_clean)
+
+plot(model4)
+```
+
+# Model selection
+
+From the `MuMIn` package
+
+```{r}
+model.sel(model0,
+          model1, 
+          model2, 
+          model3,
+          model4)
+```
+
 #Problem 1. Multiple linear regression: model selection and construction
 
 ##a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
 
+```{r}
+modelsummary::modelsummary(
+  list(
+    "Null" = model0,
+    "Model 1" = model1,
+    "Model 2" = model2,
+    "Model 3" = model3,
+    "Model 4" = model4
+  )
+) 
+```
 
 
