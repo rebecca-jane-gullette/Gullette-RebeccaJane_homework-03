@@ -6,7 +6,7 @@ author: "Rebecca-Jane Gullette"
 
 https://github.com/rebecca-jane-gullette/Gullette-RebeccaJane_homework-03.git
 
-##Read in Packages
+## Read in Packages
 
 ```{r}
 # general use
@@ -38,7 +38,7 @@ str(drought_exp)
 class(drought_exp)
 ```
 
-##Cleaning Data 
+## Cleaning Data 
 ```{r}
 # cleaning
 drought_exp_clean <- drought_exp %>% 
@@ -152,12 +152,12 @@ model.sel(model0,
           model4)
 ```
 
-#Problem 1. Multiple linear regression: model selection and construction
+# Problem 1. Multiple linear regression: model selection and construction
 
-##a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
+## a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table.
 
 ```{r}
-modelsummary::modelsummary(
+model_table <- modelsummary::modelsummary(
   list(
     "Null" = model0,
     "Model 1" = model1,
@@ -165,7 +165,81 @@ modelsummary::modelsummary(
     "Model 3" = model3,
     "Model 4" = model4
   )
-) 
+)
 ```
+
+**Table 1. Comparison of Models **
+
+```{r}
+model_table
+```
+
+## b. Write a 5-6 sentence “statistical methods” section. (8 points)
+Your answer should be in paragraph form and include:
+
+how you addressed the central question(s) (i.e. to examine the influence of ____, ____, and ____ on _____, I…)
+how you chose the final model (i.e. to determine the model that best described ____, I…)
+how you visually determined that your final model conformed to the assumptions of a linear model (i.e. to evaluate linear model assumptions, I…)
+
+```{r}
+model_preds4 <- ggpredict(model4, 
+                         terms = c("water_treatment", 
+                                   "species_name"))
+
+view(model_preds4)
+```
+
+c. creating visualization
+```{r}
+# creating new data frame of model predictions for plotting
+model_preds4_for_plotting <- model_preds4 %>% 
+  rename(water_treatment = x,
+         species_name = group)
+
+ggplot() +
+  # underlying data
+  geom_point(data = drought_exp_clean,
+             aes(x = water_treatment,
+                 y = total_g,
+                 color = water_treatment),
+             position = position_jitter(width = 0.1, height = 0),
+             size = 0.8,
+             alpha = 0.3) +
+  geom_pointrange(data = model_preds4_for_plotting,
+              aes(x = water_treatment,
+                  y = predicted,
+                  ymin = conf.low,
+                  ymax = conf.high,
+                  color = water_treatment),
+              size = 0.1) +
+  # model prediction lines
+  geom_line(data = model_preds4_for_plotting,
+            aes(x = water_treatment, 
+                y = predicted,
+                color = water_treatment)) +
+  # cleaner theme
+  labs(x = "Water Treatment", y = "Total Biomass") +
+  theme_classic() +
+  theme(axis.text.x = element_text(size = 7),
+        legend.position = "none") +
+  scale_color_manual(values = c("Well watered" = "#008080", "Drought stressed" = "#993399")) +
+  # creating different panels for species
+  facet_wrap(~species_name)
+```
+
+## d. Write a caption for your visualization.
+
+
+
+## e. Write a 3-4 sentence results section
+
+Your answer should be in paragraph form and address the following points:
+
+what predictors “best” described total mass (include model statistics here)?
+on average, what differences did you find between water treatments?
+on average, what differences did you find between species?
+
+
+# Problem 2. Affective Visualization 
 
 
