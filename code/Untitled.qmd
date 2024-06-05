@@ -38,7 +38,8 @@ str(drought_exp)
 class(drought_exp)
 ```
 
-## Cleaning Data 
+## Cleaning Data
+
 ```{r}
 # cleaning
 drought_exp_clean <- drought_exp %>% 
@@ -89,12 +90,14 @@ ggplot(data = drought_exp_clean, # data frame
   geom_jitter(width = 0.1, # narrow jitter
               height = 0) # not jittering points up and down
 ```
+
 ```{r specific leaf area on total biomass}
 ggplot(data = drought_exp_clean, # data frame
        aes(x = sla, # x-axis
            y = total_g)) + # y-axis
   geom_point() # scatterplot
 ```
+
 ## 0. Null model
 
 ```{r}
@@ -113,6 +116,7 @@ par(mfrow = c(2, 2))
 plot(model1)
 # you might get a warning when you run this code - that is ok!
 ```
+
 ## 2. total biomass as a function of SLA and water treatment
 
 ```{r}
@@ -168,18 +172,17 @@ model_table <- modelsummary::modelsummary(
 )
 ```
 
-**Table 1. Comparison of Models **
+**Table 1. Comparison of Models**
 
 ```{r}
 model_table
 ```
 
 ## b. Write a 5-6 sentence “statistical methods” section. (8 points)
+
 Your answer should be in paragraph form and include:
 
-how you addressed the central question(s) (i.e. to examine the influence of ____, ____, and ____ on _____, I…)
-how you chose the final model (i.e. to determine the model that best described ____, I…)
-how you visually determined that your final model conformed to the assumptions of a linear model (i.e. to evaluate linear model assumptions, I…)
+how you addressed the central question(s) (i.e. to examine the influence of \_\_\_\_, \_\_\_\_, and \_\_\_\_ on \_\_\_\_\_, I…) how you chose the final model (i.e. to determine the model that best described \_\_\_\_, I…) how you visually determined that your final model conformed to the assumptions of a linear model (i.e. to evaluate linear model assumptions, I…)
 
 ```{r}
 model_preds4 <- ggpredict(model4, 
@@ -189,7 +192,8 @@ model_preds4 <- ggpredict(model4,
 view(model_preds4)
 ```
 
-c. creating visualization
+c.  creating visualization
+
 ```{r}
 # creating new data frame of model predictions for plotting
 model_preds4_for_plotting <- model_preds4 %>% 
@@ -222,24 +226,31 @@ ggplot() +
   theme_classic() +
   theme(axis.text.x = element_text(size = 7),
         legend.position = "none") +
-  scale_color_manual(values = c("Well watered" = "#008080", "Drought stressed" = "#993399")) +
+  scale_color_manual(values = c("Well watered" = "deepskyblue3", "Drought stressed" = "#993399")) +
   # creating different panels for species
   facet_wrap(~species_name)
 ```
 
 ## d. Write a caption for your visualization.
 
-
-
 ## e. Write a 3-4 sentence results section
 
 Your answer should be in paragraph form and address the following points:
 
-what predictors “best” described total mass (include model statistics here)?
-on average, what differences did you find between water treatments?
-on average, what differences did you find between species?
+what predictors “best” described total mass (include model statistics here)? on average, what differences did you find between water treatments? on average, what differences did you find between species?
 
+# Problem 2. Affective Visualization
 
-# Problem 2. Affective Visualization 
+Since my data is about crocheting, I want to draw the projects that I've completed in different sizes relative to the time I spent on them, with a border indicating pattern type and difficulty, and highlighted according to type of yarn. I can add little icons to indicate background activity, recipient, time of day, etc. I would like to organize them chronologically and have an additional icon with the days of the week and their frequencies indicated with shape.
 
+b.  Create a sketch (on paper) of your idea.
 
+    ![Affective Visualization Sketch](images/affectivesketch.jpeg)
+
+c.  Make a draft of your visualization.
+
+d.  Write an artist statement.
+
+I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and would like to do a similar collage-type representation with icons, shapes, colors, and borders representing my data.
+
+# Probelm 3 Statistical Critique
