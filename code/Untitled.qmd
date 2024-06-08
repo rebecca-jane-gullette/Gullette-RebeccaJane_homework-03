@@ -246,6 +246,8 @@ c.  Make a draft of your visualization.
 
     ![Crochet Data Affective Visualization](images/affectivecrochet.jpeg)
 
+    ![Key](images/affectivekey.jpeg)
+
 d.  Write an artist statement.
 
 I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and would like to do a similar collage-type representation with icons, shapes, colors, and borders representing my data.
