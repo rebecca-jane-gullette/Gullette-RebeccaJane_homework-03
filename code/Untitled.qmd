@@ -250,23 +250,29 @@ c.  Make a draft of your visualization.
 
 d.  Write an artist statement.
 
-I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and would like to do a similar collage-type representation with icons, shapes, colors, and borders representing my data.
+I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and wanted to do a similar collage-type representation with icons, shapes, colors, and borders representing my data. For my visualization I used my iPad to create a drawing in Procreate with icons for each project I completed this quarter. This visualization shows how much time I spent on each project (size), what kind of yarn I used (highlight color), pattern (border), and pattern level (shape). Additionally I wanted to represent my crocheting habits throughout the week so I added the days of the week, with size representing average time spent per day and a sun icon indicating the time of day that I tended to crochet. I drew it all by hand and tried to represent the stitches and colors that I used for each project.
 
-# Probelm 3 Statistical Critique
+# Problem 3 Statistical Critique
 
 ## a. Revisit and summarize
 
 What are the statistical tests the authors are using to address their main research question?
 
-Insert the figure or table you described in Homework 2 here.
+The authors used 3 Kruskal Wallis Tests and one U Test to address their main research question, is illegal fishing occurring in this Brazilian MPA and if so, when? The Kruskal Wallis Tests analyze average fishing vessel detections on three different temporal scales: by year, month, and quarterly. Additionally, they performed a U test to add an additional comparison of fishing vessel detections to lobster fishing season.
+
+![Table: Fishing vessel detections within APACC yearly, month, quarterly, and according to lobster fishing season (2013-2020)](images/193statcritic.jpg)
 
 ## b. Visual clarity
 
 How clearly did the authors visually represent their statistics in figures? For example, are the x- and y-axes in a logical position? Do they show summary statistics (means and SE, for example) and/or model predictions, and if so, do they show the underlying data?
 
+The authors visually represented their data very clearly, everything is appropriately titled and labeled. I think that the temporal scale on the x axis and fishing detection on the y-axis is not only logical but very easy to read an understand. The charts all communicate the same message - the average fishing vessel detections and the different comparisons they use are very clear in the charts. They represent the data using box and whisker plots, so mean and standard error are included, although, the underlying data isn't included but they did add in the outliers.
+
 ## c. Aesthetic clarity
 
 How well did the authors handle “visual clutter”? How would you describe the the data:ink ratio?
+
+There is little to no "visual clutter" in this visualization. I think there is a high data:ink ratio because there are very few, if any aesthetic elements and all of the elements included are relevant. If anything, they could have added some color to make it more visually engaging as it is quite a mundane representation.
 
 ## d. Recommendations
 
