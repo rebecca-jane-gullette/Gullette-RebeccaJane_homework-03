@@ -216,11 +216,6 @@ ggplot() +
                   ymax = conf.high,
                   color = water_treatment),
               size = 0.1) +
-  # model prediction lines
-  geom_line(data = model_preds4_for_plotting,
-            aes(x = water_treatment, 
-                y = predicted,
-                color = water_treatment)) +
   # cleaner theme
   labs(x = "Water Treatment", y = "Total Biomass") +
   theme_classic() +
@@ -249,8 +244,30 @@ b.  Create a sketch (on paper) of your idea.
 
 c.  Make a draft of your visualization.
 
+    ![Crochet Data Affective Visualization](images/affectivecrochet.jpeg)
+
 d.  Write an artist statement.
 
 I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and would like to do a similar collage-type representation with icons, shapes, colors, and borders representing my data.
 
 # Probelm 3 Statistical Critique
+
+## a. Revisit and summarize
+
+What are the statistical tests the authors are using to address their main research question?
+
+Insert the figure or table you described in Homework 2 here.
+
+## b. Visual clarity
+
+How clearly did the authors visually represent their statistics in figures? For example, are the x- and y-axes in a logical position? Do they show summary statistics (means and SE, for example) and/or model predictions, and if so, do they show the underlying data?
+
+## c. Aesthetic clarity
+
+How well did the authors handle “visual clutter”? How would you describe the the data:ink ratio?
+
+## d. Recommendations
+
+What recommendations would you make to make the figure better? What would you take out, add, or change? Provide explanations/justifications for each of your recommendations.
+
+Alternatively, if they did not represent their statistics in a figure, what kind of figure would you recommend to them? Describe the x- and y-axes, with any geometries and aesthetics (colors, etc.). Provide enough explanation such that someone would be able to create the figure you describe in code. Provide explanations/justifications for the figure you would recommend.
