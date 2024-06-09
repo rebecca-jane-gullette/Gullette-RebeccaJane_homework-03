@@ -2,7 +2,11 @@
 title: "Homework 3"
 date: 2024-06-08
 format: html
-author: "Rebecca-Jane Gullette
+author: "Rebecca-Jane Gullette"
+toc: true
+execute: 
+    warning: false 
+    message: false 
 ---
 https://github.com/rebecca-jane-gullette/Gullette-RebeccaJane_homework-03.git
 
@@ -29,26 +33,101 @@ drought_exp <- read_xlsx(path = here("data", # reading in data
 ## a. code and annotations
 
 ```{r}
- modelsummary::modelsummary(
-  list(
-    "Null Model: No Predictors" = model0,
+drought_exp_clean <- drought_exp %>% # cleaning data
+  clean_names() %>% # changing column names
+  mutate(species_name = case_when( # adding column for species scientific names
+    species == "ENCCAL" ~ "Encelia californica", # bush sunflower
+    species == "ESCCAL" ~ "Eschscholzia californica", # California poppy
+    species == "PENCEN" ~ "Penstemon centranthifolius", # Scarlet bugler
+    species == "GRICAM" ~ "Grindelia camporum", # great valley gumweed
+    species == "SALLEU" ~ "Salvia leucophylla", # Purple sage
+    species == "STIPUL" ~ "Nasella pulchra", # Purple needlegrass
+    species == "LOTSCO" ~ "Acmispon glaber" # deerweed
+  )) %>% 
+  relocate(species_name, .after = species) %>% # move species_name column after species
+  mutate(water_treatment = case_when( # adding column with full treatment names
+    water == "WW" ~ "Well watered",
+    water == "DS" ~ "Drought stressed"
+  )) %>% 
+  relocate(water_treatment, .after = water) # moving water_treatment column after water
+
+# models from workshop 
+model0 <- lm(total_g ~ 1, # formula null model
+             data = drought_exp_clean) # data frame
+
+model1 <- lm(total_g ~ sla + water_treatment + species_name, # saturated model
+             data = drought_exp_clean) 
+
+model2 <- lm(total_g ~ sla + water_treatment, # total biomass as a function of SLA and water treatment
+             data = drought_exp_clean)
+
+model3 <- lm(total_g ~ sla + species_name, # total biomass as a function of SLA and species 
+             data = drought_exp_clean)
+
+# additional model
+model4 <- lm(total_g ~ water_treatment + species_name, # total biomass as a function of water treatment and species
+             data = drought_exp_clean)
+
+
+
+ model_table <- modelsummary::modelsummary( # create a table summarizing the models
+  list( # selecting the models to include
+    "Null Model: No Predictors" = model0, # changing model names to indicate predictors 
     "Model 1: All Predictors" = model1,
     "Model 2: SLA and Water Treatment" = model2,
     "Model 3: SLA and Species" = model3,
     "Model 4: Water Treatment and Species" = model4
-  )
-)
+  ))
 ```
 
-## b.
+Table 1. Comparison of Five Models of Total Biomass and Three Predictors: Specific Leaf Area, Water Treatment, and Species. 
+
+```{r}
+model_table # display table of models
+```
+
+## b. Write a 5-6 sentence “statistical methods” section.
+
+To examine the influence of specific leaf area (SLA), water treatment, and species on the total biomass of plants in California I created 5 linear models with different combinations of predictor variables. The null model had no predictors, model 1 included all predictors, model 2 looked at SLA and water treatment,  model 3 looked at SLA and species, and model 4 looked at the effect of water treatment and species on total biomass. To determine the model that best predicts total biomass I used the model.sel() function from the MuMin package which calculated the lowest AIC and a delta of 0 for Model 4. Before concluding that this was the final model I evaluated it for the assumptions of a linear model using the diagnostic plots and the residuals follow a linear pattern on the QQ plot and the residuals are homoscedastic and normally distributed.
+
+## c. Make a visualization of the model predictions with underlying data for your “best” model.
+
+```{r}
+model_preds4 <- ggpredict(model4, # create data frame with model predictions
+                         terms = c("water_treatment", 
+                                   "species_name"))
+
+model_preds4_for_plotting <- model_preds4 %>% # creating new data frame of model predictions to plot
+  rename(water_treatment = x, # renaming columns to be easier to work with
+         species_name = group)
+
+ggplot() + # creating a plot
+  geom_point(data = drought_exp_clean, # plotting underlying data 
+             aes(x = water_treatment,
+                 y = total_g,
+                 color = water_treatment), # creating different colors for water treatment
+             position = position_jitter(width = 0.1, height = 0), # jittering points
+             size = 0.8,
+             alpha = 0.3) + # making underlying data transparent
+  geom_pointrange(data = model_preds4_for_plotting, # adding model predictions
+              aes(x = water_treatment,
+                  y = predicted,
+                  ymin = conf.low, # adding confidence interval
+                  ymax = conf.high,
+                  color = water_treatment),
+              size = 0.1) +
+  labs(x = "Water Treatment", y = "Total Biomass") + # labeling axes
+  theme_classic() + # changing to cleaner theme
+  theme(axis.text.x = element_text(size = 7), # making text smaller to prevent labels from overlaping
+        legend.position = "none") + # getting rid of legend
+  scale_color_manual(values = c("Well watered" = "deepskyblue3", "Drought stressed" = "#993399")) + # changing from default colors
+  facet_wrap(~species_name)  # creating different panels for species
+```
+## d. Write a caption for your visualization.
 
 
-## c.  code and annotations
 
-
-## d. 
-
-## e. 
+## e. Write a 3-4 sentence results section.
 
 
 
