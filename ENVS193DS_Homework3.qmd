@@ -125,13 +125,55 @@ ggplot() + # creating a plot
 ```
 ## d. Write a caption for your visualization.
 
-
+Figure 1. Total Biomass of 7 native California plant species under different water treatments. Each plot compares the total biomass of a plant species when they are well watered versus drought stressed. Blue indicates well watered and purple indicates drought stressed. Each plot displays the average biomass and a 95% confidence interval. Data Source: Valliere J, Zhang J, Sharifi M, Rundel P (2019) *Can we condition native plants to increase drought tolerance and improve restoration success?* https://doi.org/10.5061/dryad.v0861f7.
 
 ## e. Write a 3-4 sentence results section.
 
+Your answer should be in paragraph form and address the following points:
 
+what predictors “best” described total mass (include model statistics here)?
+on average, what differences did you find between water treatments?
+on average, what differences did you find between species?
 
+# Problem 2. Affective visualization
 
+## a. Describe in words what an affective visualization could look like for your personal data (3-5 sentences)
+
+Since my data is about crocheting, I want to make icons of the projects that I've completed. I could do them in different sizes relative to the time I spent on each with a border indicating pattern type and difficulty, and highlighted according to type of yarn. I would like to organize them chronologically and have an additional icon indicating the day of the week and time of day I crochet the most.
+
+## b. Create a sketch (on paper) of your idea.
+
+    ![Affective Visualization Sketch](images/affectivesketch.jpeg)
+    
+## c. Make a draft of your visualization.
+
+    ![Crochet Data Affective Visualization](images/affectivecrochet.jpeg)
+
+    ![Key](images/affectivekey.jpeg)
+    
+## d. Write an artist statement.
+
+I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and wanted to do a similar collage-type representation with icons, shapes, colors, and borders representing my data. For my visualization I used my iPad to create a drawing in Procreate with icons for each project I completed this quarter. This visualization shows how much time I spent on each project (size), what kind of yarn I used (highlight color), pattern (border), and pattern level (shape). Additionally I wanted to represent my crocheting habits throughout the week so I added the days of the week, with size representing average time spent per day and a sun icon indicating the time of day that I tended to crochet. I drew it all by hand and tried to represent the stitches and colors that I used for each project.
+
+# Problem 3. Statistical critique
+
+## a. Revisit and summarize
+
+The authors used 3 Kruskal Wallis Tests and one U Test to address their main research question, is illegal fishing occurring in this Brazilian MPA and if so, when? The Kruskal Wallis Tests analyze average fishing vessel detections on three different temporal scales: by year, month, and quarterly. Additionally, they performed a U test to add an additional comparison of fishing vessel detections to lobster fishing season.
+
+![Table: Fishing vessel detections within APACC yearly, month, quarterly, and according to lobster fishing season (2013-2020)](images/193statcritic.jpg)
+
+## b. Visual clarity
+
+The authors visually represented their data very clearly, everything is appropriately titled and labeled. I think that the temporal scale on the x axis and fishing detection on the y-axis is not only logical but very easy to read an understand. The charts all communicate the same message - the average fishing vessel detections and the different comparisons they use are very clear in the charts. They represent the data using box and whisker plots, so mean and standard error are included, although, the underlying data isn't included but they did add in the outliers.
+
+## c. Aesthetic clarity
+
+There is little to no "visual clutter" in this visualization. I think there is a high data:ink ratio because there are very few, if any, aesthetic elements and all of the elements included are relevant data, labels, or statistical tests.
+
+## d. Recommendations
+
+I don't think there is anything that I would recommend taking out, if anything, they could have added some color to make it more visually engaging as it is quite a mundane representation. While it is clear that the plots represent different temporal scales, a different color for each chart would make this difference apparent at first glance. I think adding the underlying data very transparently would provide a bit more context particularly to the Lobster Fishing Season plot as there a quite a few outliers. Since they list their p-value on the plot I think there should be some indication of the significance level either as astrix on the charts or in the caption.
 
 
 
