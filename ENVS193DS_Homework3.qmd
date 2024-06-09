@@ -8,9 +8,11 @@ execute:
     warning: false 
     message: false 
 ---
+
 https://github.com/rebecca-jane-gullette/Gullette-RebeccaJane_homework-03.git
 
 ## Read in Packages and Data
+
 ```{r}
 library(tidyverse) # clean data
 library(readxl) # read in excel file 
@@ -30,7 +32,7 @@ drought_exp <- read_xlsx(path = here("data", # reading in data
 
 # Problem 1
 
-## a. code and annotations
+## a. Code and annotations
 
 ```{r}
 drought_exp_clean <- drought_exp %>% # cleaning data
@@ -80,7 +82,7 @@ model4 <- lm(total_g ~ water_treatment + species_name, # total biomass as a func
   ))
 ```
 
-Table 1. Comparison of Five Models of Total Biomass and Three Predictors: Specific Leaf Area, Water Treatment, and Species. 
+Table 1. Comparison of Five Models of Total Biomass and Three Predictors: Specific Leaf Area, Water Treatment, and Species.
 
 ```{r}
 model_table # display table of models
@@ -88,7 +90,7 @@ model_table # display table of models
 
 ## b. Write a 5-6 sentence “statistical methods” section.
 
-To examine the influence of specific leaf area (SLA), water treatment, and species on the total biomass of plants in California I created 5 linear models with different combinations of predictor variables. The null model had no predictors, model 1 included all predictors, model 2 looked at SLA and water treatment,  model 3 looked at SLA and species, and model 4 looked at the effect of water treatment and species on total biomass. To determine the model that best predicts total biomass I used the model.sel() function from the MuMin package which calculated the lowest AIC and a delta of 0 for Model 4. Before concluding that this was the final model I evaluated it for the assumptions of a linear model using the diagnostic plots and the residuals follow a linear pattern on the QQ plot and the residuals are homoscedastic and normally distributed.
+To examine the influence of specific leaf area (SLA), water treatment, and species on the total biomass of plants in California I created 5 linear models with different combinations of predictor variables. The null model had no predictors, model 1 included all predictors, model 2 looked at SLA and water treatment, model 3 looked at SLA and species, and model 4 looked at the effect of water treatment and species on total biomass. To determine the model that best predicts total biomass I used the model.sel() function from the MuMin package which calculated the lowest AIC and a delta of 0 for Model 4. Before concluding that this was the final model I evaluated it for the assumptions of a linear model using the diagnostic plots and the residuals follow a linear pattern on the QQ plot and the residuals are homoscedastic and normally distributed.
 
 ## c. Make a visualization of the model predictions with underlying data for your “best” model.
 
@@ -123,17 +125,14 @@ ggplot() + # creating a plot
   scale_color_manual(values = c("Well watered" = "deepskyblue3", "Drought stressed" = "#993399")) + # changing from default colors
   facet_wrap(~species_name)  # creating different panels for species
 ```
+
 ## d. Write a caption for your visualization.
 
-Figure 1. Total Biomass of 7 native California plant species under different water treatments. Each plot compares the total biomass of a plant species when they are well watered versus drought stressed. Blue indicates well watered and purple indicates drought stressed. Each plot displays the average biomass and a 95% confidence interval. Data Source: Valliere J, Zhang J, Sharifi M, Rundel P (2019) *Can we condition native plants to increase drought tolerance and improve restoration success?* https://doi.org/10.5061/dryad.v0861f7.
+**Figure 1. Total Biomass of 7 native California plant species under different water treatments.** Each plot compares the total biomass of a plant species when they are well watered versus drought stressed. Blue indicates well watered and purple indicates drought stressed. Each plot displays the average biomass and a 95% confidence interval. Data Source: Valliere J, Zhang J, Sharifi M, Rundel P (2019) *Can we condition native plants to increase drought tolerance and improve restoration success?* https://doi.org/10.5061/dryad.v0861f7.
 
 ## e. Write a 3-4 sentence results section.
 
-Your answer should be in paragraph form and address the following points:
-
-what predictors “best” described total mass (include model statistics here)?
-on average, what differences did you find between water treatments?
-on average, what differences did you find between species?
+Based on model predictions, the predictors that "best" described total mass were water treatment and species (AIC = -159.2, delta = 0, Rsquared = 0.754). Between water treatments, on average, across species plants had a larger total biomass in well watered treatments (0.117 ± 0.017 g), compared to drought stressed plants. Across water treatments, on average, *Gindelia camporum* (great valley gumweed) had the largest total biomass (0.313 ± 0.032 g) and *Acmispon glaber* (deerweed) had the smallest total biomass.
 
 # Problem 2. Affective visualization
 
@@ -143,14 +142,14 @@ Since my data is about crocheting, I want to make icons of the projects that I'v
 
 ## b. Create a sketch (on paper) of your idea.
 
-    ![Affective Visualization Sketch](images/affectivesketch.jpeg)
-    
+![Crochet Data Affective Visualization Sketch](images/affectivesketch.jpeg)
+
 ## c. Make a draft of your visualization.
 
-    ![Crochet Data Affective Visualization](images/affectivecrochet.jpeg)
+![Crochet Data Affective VIsualization](images/affectivecrochet.jpeg)
 
-    ![Key](images/affectivekey.jpeg)
-    
+![Key](images/affectivekey.jpeg)
+
 ## d. Write an artist statement.
 
 I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project and wanted to do a similar collage-type representation with icons, shapes, colors, and borders representing my data. For my visualization I used my iPad to create a drawing in Procreate with icons for each project I completed this quarter. This visualization shows how much time I spent on each project (size), what kind of yarn I used (highlight color), pattern (border), and pattern level (shape). Additionally I wanted to represent my crocheting habits throughout the week so I added the days of the week, with size representing average time spent per day and a sun icon indicating the time of day that I tended to crochet. I drew it all by hand and tried to represent the stitches and colors that I used for each project.
@@ -161,7 +160,7 @@ I was very inspired by Stefanie Posavec and Giorgia Lupi’s Dear Data project a
 
 The authors used 3 Kruskal Wallis Tests and one U Test to address their main research question, is illegal fishing occurring in this Brazilian MPA and if so, when? The Kruskal Wallis Tests analyze average fishing vessel detections on three different temporal scales: by year, month, and quarterly. Additionally, they performed a U test to add an additional comparison of fishing vessel detections to lobster fishing season.
 
-![Table: Fishing vessel detections within APACC yearly, month, quarterly, and according to lobster fishing season (2013-2020)](images/193statcritic.jpg)
+![Table: Fishing vessel detections within APACC: yearly, month, quarterly, and according to lobster fishing season (2013-2020)](images/193statcritic.jpg)
 
 ## b. Visual clarity
 
@@ -173,7 +172,4 @@ There is little to no "visual clutter" in this visualization. I think there is a
 
 ## d. Recommendations
 
-I don't think there is anything that I would recommend taking out, if anything, they could have added some color to make it more visually engaging as it is quite a mundane representation. While it is clear that the plots represent different temporal scales, a different color for each chart would make this difference apparent at first glance. I think adding the underlying data very transparently would provide a bit more context particularly to the Lobster Fishing Season plot as there a quite a few outliers. Since they list their p-value on the plot I think there should be some indication of the significance level either as astrix on the charts or in the caption.
-
-
-
+I don't think there is anything that I would recommend taking out, if anything, they could have added some color to make it more visually engaging as it is quite a mundane representation. While it is clear that the plots represent different temporal scales, a different color for each chart would make this difference apparent at first glance. I think adding the underlying data very transparently would provide a bit more context particularly to the Lobster Fishing Season plot as there a quite a few outliers. Since they list their p-value on the plot I think there should be some indication of the significance level either as an asterisk on the charts or in the caption.
